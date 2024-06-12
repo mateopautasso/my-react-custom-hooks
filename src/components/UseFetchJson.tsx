@@ -1,4 +1,5 @@
 import { useFetchJson } from '../hooks/useFetchJson'
+import styles from '../css/UseFetchJson.module.css'
 const getData = async () => fetch('https://retoolapi.dev/CWRZ2H/data')
 
 interface IUser {
@@ -8,20 +9,21 @@ interface IUser {
 }
 
 export function UseFetchJson() {
-	const { loading, error, data, fetcher } = useFetchJson<IUser[] | []>(getData)
+	const { loading, error, data, fetcher } = useFetchJson<IUser[] | []>(getData, true)
 
 	return (
-		<article>
+		<article className={styles.article}>
 			<header>
-				<h2>useFetch Example:</h2>
+				<h2>useFetch example:</h2>
 			</header>
 
 			<section>
 				<button onClick={fetcher}>Buscar nuevos resultados</button>
+
 				{loading ? (
 					<p>Loading...</p>
 				) : data && data.length > 0 ? (
-					<ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+					<ul>
 						{data.map((item) => (
 							<li key={item.id}>
 								<p>{item.fullname}</p>

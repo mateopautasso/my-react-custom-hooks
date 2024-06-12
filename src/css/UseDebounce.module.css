@@ -1,0 +1,13 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.form label {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: start;
+}
+.form b {
+	text-decoration: underline;
+}
