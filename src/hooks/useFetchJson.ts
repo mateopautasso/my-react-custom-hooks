@@ -24,7 +24,7 @@ export const useFetchJson = <T>(fetchingFn: () => Promise<Response>, initialCall
 
 	useEffect(() => {
 		initialCall && fetcher()
-	}, [fetcher])
+	}, [fetcher, initialCall])
 
 	return { loading, error, data, fetcher }
 }
