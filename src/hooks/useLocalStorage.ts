@@ -40,16 +40,18 @@ export const useLocalStorage = () => {
 			window.localStorage.setItem(key, valueToString)
 		} else window.localStorage.setItem(key, value)
 
-		setLocalStorage({ ...localStorage, [key]: value })
+		setLocalStorage((prevState) => ({ ...prevState, [key]: value }))
 	}
 
 	const removeItem = (key: string) => {
 		const item = window.localStorage.getItem(key)
 		if (item) {
 			window.localStorage.removeItem(key)
-			const currentObject = { ...inLocalStorage }
-			delete currentObject[key]
-			setLocalStorage(currentObject)
+			setLocalStorage((prevState) => {
+				const newState = { ...prevState }
+				delete newState[key]
+				return newState
+			})
 		}
 	}
 

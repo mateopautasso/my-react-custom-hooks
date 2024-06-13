@@ -1,9 +1,9 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 export const useDebounce = (fn: (...args: any[]) => void, delay: number) => {
 	const timeout = useRef<number | null>(null)
 
-	return (...args: any[]) => {
+	const debouncedFunction = (...args: any[]) => {
 		if (timeout.current) window.clearTimeout(timeout.current)
 
 		timeout.current = setTimeout(() => {
@@ -11,4 +11,12 @@ export const useDebounce = (fn: (...args: any[]) => void, delay: number) => {
 			timeout.current = null
 		}, delay)
 	}
+
+	useEffect(() => {
+		return () => {
+			if (timeout.current) clearTimeout(timeout.current)
+		}
+	}, [])
+
+	return debouncedFunction
 }
