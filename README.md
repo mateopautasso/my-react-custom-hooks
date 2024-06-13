@@ -10,7 +10,7 @@ Este repositorio contiene una colección de custom hooks creados para resolver p
 
 ## useFetchJson
 
-Este hook simplifica el proceso de realizar peticiones HTTP a través de fetch y manejar el estado de carga y error. Convierte automáticamente la respuesta a JSON.
+`useFetchJson` simplifica el proceso de realizar peticiones HTTP a través de fetch y manejar el estado de carga y error. Convierte automáticamente la respuesta a JSON.
 
 ### Parámetros
 
@@ -26,7 +26,7 @@ Este hook simplifica el proceso de realizar peticiones HTTP a través de fetch y
 
 ## useDebounce
 
-El hook `useDebounce` se utiliza para retrasar la ejecución de una función hasta que ha pasado una cantidad de tiempo específica desde la última vez que se invocó.
+`useDebounce` se utiliza para retrasar la ejecución de una función hasta que ha pasado una cantidad de tiempo específica desde la última vez que se invocó.
 
 ## Parámetros
 
@@ -36,3 +36,18 @@ El hook `useDebounce` se utiliza para retrasar la ejecución de una función has
 ### Retorno
 
 Una función que, al ser llamada, retrasará la ejecución de fn por el tiempo especificado en delay.
+
+## useLocalStorage
+
+`useLocalStorage` se utiliza para gestionar el estado con persistencia en el localStorage del navegador.
+
+### Parámetros
+
+No requiere parámetros.
+
+### Retorno
+
+- `inLocalStorage`: Un objeto que contiene todos los elementos actualmente almacenados en el localStorage.
+- `getItem`: Una función que toma una clave y retorna el valor asociado desde el localStorage.
+- `setItem`: Una función que toma una clave y un valor, y guarda este último en el localStorage.
+- `removeItem`: Una función que toma una clave y elimina el elemento asociado del localStorage.
