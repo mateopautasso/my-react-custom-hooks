@@ -1,5 +1,13 @@
 import { useFetchJson } from '../hooks/useFetchJson'
 import styles from '../css/UseFetchJson.module.css'
+
+// const getData = async () => {
+// 	const request = await fetch('https://retoolapi.dev/CWRZ2H/datas')
+// 	if (!request.ok) throw new Error()
+// 	const response = await request.json()
+// 	return response
+// }
+
 const getData = async () => fetch('https://retoolapi.dev/CWRZ2H/data')
 
 interface IUser {
