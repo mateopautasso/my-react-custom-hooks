@@ -10,14 +10,13 @@ export const useFetchJson = <T>(fetchingFn: () => Promise<Response>, initialCall
 		setLoading(true)
 
 		try {
-			const request = await fetchingFn()
-			if (!request.ok) throw new Error()
-			const response = await request.json()
-			//
-			setData(response)
+			const response = await fetchingFn()
+			if (!response.ok) throw new Error()
+			setData(await response.json())
 		} catch (error) {
-			// Acá se manejaría el error de forma personalizada de ser necesario...
+			// Acá se manejaría el error de forma personalizada de ser necesario. Ej:
 			console.error('Fetching error:', error)
+			//
 			setError(true)
 		} finally {
 			setLoading(false)
