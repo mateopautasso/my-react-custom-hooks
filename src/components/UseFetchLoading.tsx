@@ -1,4 +1,5 @@
-import { useFetchJson } from '../hooks/useFetchJson'
+import { useFetchLoading } from '../hooks/useFetchLoading'
+import { useEffect, useState } from 'react'
 import styles from '../css/UseFetchJson.module.css'
 
 const getData = async () => fetch('https://retoolapi.dev/CWRZ2H/data')
@@ -9,8 +10,16 @@ interface IUser {
 	fullname: string
 }
 
-export function UseFetchJson() {
-	const { loading, error, data, fetcher } = useFetchJson<IUser[] | []>(getData, true)
+export function UseFetchLoading() {
+	const { loading, fetcher } = useFetchLoading(getData)
+	const [data, setData] = useState<IUser[] | []>([])
+
+	useEffect(() => {
+		fetcher()
+			.then((res) => res.json())
+			.then((res) => setData(res))
+			.catch((err) => console.log(err))
+	}, [])
 
 	return (
 		<article className={styles.article}>
@@ -23,7 +32,7 @@ export function UseFetchJson() {
 
 				{loading ? (
 					<p>Loading...</p>
-				) : data && data.length > 0 ? (
+				) : data.length > 0 ? (
 					<ul>
 						{data.map((item) => (
 							<li key={item.id}>
@@ -33,9 +42,8 @@ export function UseFetchJson() {
 						))}
 					</ul>
 				) : (
-					data && data.length === 0 && <p>No se encontraron resultados.</p>
+					<p>No se encontraron resultados.</p>
 				)}
-				{error && <p>Ocurrió un error.</p>}
 			</section>
 		</article>
 	)
