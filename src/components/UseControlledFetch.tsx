@@ -1,4 +1,4 @@
-import { useFetchJsonController } from '../hooks'
+import { useControlledFetch } from '../hooks'
 import { useEffect } from 'react'
 import styles from '../css/UseFetchJson.module.css'
 
@@ -8,8 +8,8 @@ interface IUser {
 	fullname: string
 }
 
-export function UseFetchJsonController() {
-	const { data, error, loading, controlledFetch } = useFetchJsonController<IUser[] | []>()
+export function UseControlledFetch() {
+	const { data, error, loading, controlledFetch } = useControlledFetch<IUser[] | []>()
 	const handleClick = () => controlledFetch('https://retoolapi.dev/CWRZ2H/data')
 
 	useEffect(() => {
@@ -18,6 +18,7 @@ export function UseFetchJsonController() {
 
 	return (
 		<article className={styles.article}>
+			{JSON.stringify(loading)}
 			<header>
 				<h2>useFetchJsonController example:</h2>
 			</header>

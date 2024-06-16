@@ -1,4 +1,4 @@
-import { useFetchLoading } from '../hooks/useFetchLoading'
+import { useLoadingFetch } from '../hooks/useLoadingFetch'
 import { useEffect, useState } from 'react'
 import styles from '../css/UseFetchJson.module.css'
 
@@ -11,7 +11,7 @@ interface IUser {
 }
 
 export function UseFetchLoading() {
-	const { loading, fetcher } = useFetchLoading(getData)
+	const { loading, fetcher } = useLoadingFetch(getData)
 	const [data, setData] = useState<IUser[] | []>([])
 
 	useEffect(() => {

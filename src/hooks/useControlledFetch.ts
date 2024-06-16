@@ -7,7 +7,7 @@ interface ReturnType<T> {
 	controlledFetch: (url: string, options?: RequestInit) => Promise<void>
 }
 
-export const useFetchJsonController = <T>(): ReturnType<T> => {
+export const useControlledFetch = <T>(): ReturnType<T> => {
 	const [loading, setLoading] = useState(false)
 	const [data, setData] = useState<T | null>(null)
 	const [error, setError] = useState(false)

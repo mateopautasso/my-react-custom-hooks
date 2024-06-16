@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 
-export const useFetchLoading = (fetchingFn: () => Promise<any>) => {
+export const useLoadingFetch = (fetchingFn: () => Promise<any>) => {
 	const [loading, setLoading] = useState(false)
 
 	const fetcher = useCallback(async () => {
