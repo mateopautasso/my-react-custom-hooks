@@ -1,8 +1,6 @@
 import { useLoadingFetch } from '../hooks/useLoadingFetch'
 import { useEffect, useState } from 'react'
-import styles from '../css/UseFetchJson.module.css'
-
-const getData = async () => fetch('https://retoolapi.dev/CWRZ2H/data')
+import styles from '../css/UseLoadingFetch.module.css'
 
 interface IUser {
 	id: number
@@ -10,15 +8,19 @@ interface IUser {
 	fullname: string
 }
 
-export function UseFetchLoading() {
-	const { loading, fetcher } = useLoadingFetch(getData)
+export function UseLoadingFetch() {
 	const [data, setData] = useState<IUser[] | []>([])
+	const { loading, fetcher } = useLoadingFetch()
 
-	useEffect(() => {
-		fetcher()
+	const handleClick = () => {
+		fetcher('https://retoolapi.dev/CWRZ2H/data')
 			.then((res) => res.json())
 			.then((res) => setData(res))
 			.catch((err) => console.log(err))
+	}
+
+	useEffect(() => {
+		handleClick()
 	}, [])
 
 	return (
@@ -28,7 +30,7 @@ export function UseFetchLoading() {
 			</header>
 
 			<section>
-				<button onClick={fetcher}>Buscar nuevos resultados</button>
+				<button onClick={handleClick}>Buscar nuevos resultados</button>
 
 				{loading ? (
 					<p>Loading...</p>

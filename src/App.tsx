@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { UseFetchJson, UseDebounce, UseLocalStorage, UseLoadingFetch, UseControlledFetch } from './components'
+import { UseDebounce, UseLocalStorage, UseLoadingFetch, UseControlledFetch } from './components'
 
 function App() {
 	const [active, setActive] = useState(true)

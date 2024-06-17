@@ -1,0 +1,21 @@
+.article ul {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.article {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.article section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+}
