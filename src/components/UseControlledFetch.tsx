@@ -1,6 +1,6 @@
 import { useControlledFetch } from '../hooks'
 import { useEffect } from 'react'
-import styles from '../css/UseFetchJson.module.css'
+import styles from '../css/UseControlledFetch.module.css'
 
 interface IUser {
 	id: number
@@ -18,9 +18,8 @@ export function UseControlledFetch() {
 
 	return (
 		<article className={styles.article}>
-			{JSON.stringify(loading)}
 			<header>
-				<h2>useFetchJsonController example:</h2>
+				<h2>useControlledFetch example:</h2>
 			</header>
 
 			<section>
