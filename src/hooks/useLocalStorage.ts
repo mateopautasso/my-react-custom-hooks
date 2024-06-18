@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { formattedLocalStorage } from '../utils'
 
 export const useLocalStorage = () => {
-	const [inLocalStorage, setLocalStorage] = useState(() => (window.localStorage.length ? formattedLocalStorage() : {}))
+	const [inLocalStorage, setLocalStorage] = useState(() => {
+		return window.localStorage.length ? formattedLocalStorage() : {}
+	})
 
 	const getItem = (key: string) => {
 		const item = window.localStorage.getItem(key)
