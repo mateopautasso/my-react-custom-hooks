@@ -35,7 +35,7 @@ No recibe parámetros.
 - `data: T | null` - Los datos obtenidos de la petición.
 - `error: boolean` - Indica si ha ocurrido un error en la petición.
 - `loading: boolean` - Indica si la petición está en proceso.
-- `controlledFetch: (url: string, options?: RequestInit) => Promise<void>` - Función para ejecutar la petición manualmente.
+- `controlledFetch: (url: string, options?: RequestInit) => unknown` - Función para ejecutar la petición manualmente.
 
 ### useDebounce
 
