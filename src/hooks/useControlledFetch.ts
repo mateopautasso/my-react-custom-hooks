@@ -4,7 +4,7 @@ interface ReturnType<T> {
 	data: T | null
 	error: boolean
 	loading: boolean
-	controlledFetch: (url: string, options?: RequestInit) => Promise<void>
+	controlledFetch: (url: string, options?: RequestInit) => unknown
 }
 
 export const useControlledFetch = <T>(): ReturnType<T> => {
