@@ -1,28 +1,39 @@
+import styles from '../css/UseDebounce.module.css'
 import { useState } from 'react'
 import { useDebounce } from '../hooks'
-import styles from '../css/UseDebounce.module.css'
 
 export function UseDebounce() {
-	const [username, setUsername] = useState('')
+	const [search, setSearch] = useState('')
+	const [searchDebounced, setSearchDebounced] = useState('')
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const newValue = e.target.value
-		console.log(`¡Nueva petición! | Valor: ${newValue}`)
-		setUsername(newValue)
-	}
-
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setSearchDebounced(e.target.value)
 	const handleChangeDebounced = useDebounce(handleChange, 750)
 
 	return (
-		<>
+		<section>
 			<h2>useDebounce example:</h2>
 			<form className={styles.form}>
-				<label htmlFor='username'>Buscador</label>
-				<input id='username' type='text' onChange={handleChangeDebounced} />
-				<p>
-					<b>Búsqueda:</b> {username}
-				</p>
+				<fieldset>
+					<h3>Sin useDebounce:</h3>
+					<div>
+						<label htmlFor='search-field'>Buscador</label>
+						<input id='search-field' type='text' onChange={(e) => setSearch(e.target.value)} />
+					</div>
+					<p>
+						<b>Búsqueda:</b> {search}
+					</p>
+				</fieldset>
+				<fieldset>
+					<h3>Con useDebounce:</h3>
+					<div>
+						<label htmlFor='search-debounced-field'>Buscador</label>
+						<input id='search-debounced-field' type='text' onChange={handleChangeDebounced} />
+					</div>
+					<p>
+						<b>Búsqueda:</b> {searchDebounced}
+					</p>
+				</fieldset>
 			</form>
-		</>
+		</section>
 	)
 }

@@ -12,8 +12,8 @@ function App() {
 	return (
 		<main>
 			<h1 style={{ textDecoration: 'underline' }}>Mateo Pautasso - Custom Hooks</h1>
-			{active && <UseControlledFetch />}
-			<button onClick={handleClick}>{active ? 'Desmontar componente' : 'Montar componente'}</button>
+			{active && <UseDebounce />}
+			{/* <button onClick={handleClick}>{active ? 'Desmontar componente' : 'Montar componente'}</button> */}
 		</main>
 	)
 }

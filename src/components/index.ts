@@ -1,5 +1,4 @@
 export * from './UseDebounce'
-export * from './UseFetchJson'
 export * from './UseLocalStorage'
 export * from './UseLoadingFetch'
 export * from './UseControlledFetch'
